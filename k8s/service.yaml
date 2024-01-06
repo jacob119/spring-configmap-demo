@@ -1,0 +1,20 @@
+# Kubernetes API version
+apiVersion: v1
+# Kubernetes resource kind
+kind: Service
+# Metadata of the resource kind
+metadata:
+  name: app-sample
+#서비스의 타입을 정한다.
+spec:
+  type: LoadBalancer
+  #서비스가 트래픽을 전달할 pod을 설정
+  selector:
+    app: app-sample
+  #서비스의 port 설정
+  ports:
+    - protocol: TCP
+      port: 9999
+      targetPort: 9999
+      nodePort: 32000
+## k expose deployment app-sample --type=LoadBalancer --port=9999 --target-port=9999
